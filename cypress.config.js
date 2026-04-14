@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: "2gcjuw",
   e2e: {
     baseUrl: "http://qamid.tmweb.ru",
     specPattern: "cypress/e2e/**/*.cy.js",
@@ -18,4 +19,3 @@ module.exports = defineConfig({
   },
   defaultCommandTimeout: 10000,
 });
-
