@@ -1,0 +1,29 @@
+name: Cypress Parallel Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        container: [1, 2]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Cypress tests in parallel
+        uses: cypress-io/github-action@v6
+        with:
+          record: true
+          parallel: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
